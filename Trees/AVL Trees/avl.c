@@ -85,8 +85,7 @@ struct Node *insertNode(struct Node *node, int key) {
 
   // Update the balance factor of each node and
   // Balance the tree
-  node->height = 1 + max(height(node->left),
-               height(node->right));
+  node->height = 1 + max(height(node->left),height(node->right));
 
   int balance = getBalance(node);
   if (balance > 1 && key < node->left->key)
