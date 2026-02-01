@@ -59,7 +59,20 @@ The content follows a **college-first, exam-oriented approach**, aligned with co
 - Traversal Techniques
 - Problem-solving using data structures
 
-*(More topics will be added continuously.)*
+# Time Complexity Examples (C / C++)
+
+This folder contains simple and exam-oriented programs
+demonstrating different time complexities.
+
+## Files Included
+- O(1) – Constant Time
+- O(n) – Linear Time
+- O(n²) – Quadratic Time
+- O(log n) – Logarithmic Time
+- O(n log n) – Linearithmic Time
+
+Each file contains multiple examples to clearly explain
+the behavior of that complexity.
 
 ---
 
