@@ -15,6 +15,11 @@ int main() {
     }
     printf("\n");
 
+    for(int i = 1; i < n; i*=2) {
+        printf("%d ", i);
+    }
+    // 1,2,4,8,... so runs log(n) times which is O(log n)
+
     // Example 2: Binary search idea (loop count)
     int low = 0, high = 16;
     while(low <= high) {

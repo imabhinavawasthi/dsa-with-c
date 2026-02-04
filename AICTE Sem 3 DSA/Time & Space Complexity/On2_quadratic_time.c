@@ -7,6 +7,7 @@
 int main() {
 
     int n = 4;
+    int m = 3;
 
     // Example 1: Nested loops
     for(int i = 0; i < n; i++) {
@@ -25,7 +26,7 @@ int main() {
     }
 
     // Example 3: Bubble sort logic
-    for(int i = 0; i < n; i++) {
+    for(int i = 0; i < n; i++) { // O(n^2) due to nested loops
         for(int j = 0; j < n - 1; j++) {
             if(arr[j] > arr[j + 1]) {
                 int temp = arr[j];
@@ -34,6 +35,13 @@ int main() {
             }
         }
     }
+    
+    for(int i = 0; i < n; i++) { // O(n*m) due to nested loops
+        for(int j = 0; j < m; j++) {
+        }
+    }
+
+    // O(n^2 + n*m) overall time complexity
 
     return 0;
 }

@@ -7,7 +7,7 @@ int main() {
     printf("Subtraction: %d\n", a - b);
     printf("Multiplication: %d\n", a * b);
     printf("Division: %d\n", a / b);
-    printf("Modulus: %d\n", a % b);
+    printf("Modulus: %d\n", a % b); // remainder
 
     return 0;
 }
