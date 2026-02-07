@@ -4,6 +4,15 @@
 int queue[MAX];
 int front = -1, rear = -1;
 
+
+bool isEmpty() {
+    return front == -1 || front > rear;
+}
+
+bool isFull() {
+    return rear == MAX - 1;
+}
+
 // Enqueue (Add)
 void enqueue(int value) {
     if (rear == MAX - 1) {

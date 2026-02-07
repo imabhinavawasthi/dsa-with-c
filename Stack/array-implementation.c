@@ -1,136 +1,70 @@
 #include <stdio.h>
-#include <stdlib.h>
+#define MAX 5
 
-// Node structure
-struct node {
-    int data;
-    struct node *next;
-};
+int stack[MAX];
+int top = -1;
 
-struct node *head = NULL;
-
-// Insertion at beginning
-void insert_begin(int value) {
-    struct node *newnode, *temp;
-    newnode = (struct node *)malloc(sizeof(struct node));
-    newnode->data = value;
-
-    if (head == NULL) {
-        head = newnode;
-        newnode->next = head;
-        return;
-    }
-
-    temp = head;
-    while (temp->next != head)
-        temp = temp->next;
-
-    newnode->next = head;
-    temp->next = newnode;
-    head = newnode;
+// Push operation
+bool isEmpty() {
+    return top == -1;
 }
 
-// Insertion at end
-void insert_end(int value) {
-    struct node *newnode, *temp;
-    newnode = (struct node *)malloc(sizeof(struct node));
-    newnode->data = value;
-
-    if (head == NULL) {
-        head = newnode;
-        newnode->next = head;
-        return;
-    }
-
-    temp = head;
-    while (temp->next != head)
-        temp = temp->next;
-
-    temp->next = newnode;
-    newnode->next = head;
+bool isFull() {
+    return top == MAX - 1;
 }
 
-// Deletion from beginning
-void delete_begin() {
-    struct node *temp, *last;
-
-    if (head == NULL) {
-        printf("List is empty\n");
+void push(int value) {
+    if (top == MAX - 1) {
+        printf("Stack Overflow\n");
         return;
     }
-
-    if (head->next == head) {
-        free(head);
-        head = NULL;
-        return;
-    }
-
-    last = head;
-    while (last->next != head)
-        last = last->next;
-
-    temp = head;
-    head = head->next;
-    last->next = head;
-    free(temp);
+    top++;
+    stack[top] = value;
 }
 
-// Deletion from end
-void delete_end() {
-    struct node *temp, *prev;
-
-    if (head == NULL) {
-        printf("List is empty\n");
+// Pop operation
+void pop() {
+    if (top == -1) {
+        printf("Stack Underflow\n");
         return;
     }
+    printf("Popped element: %d\n", stack[top]);
+    top--;
+}
 
-    if (head->next == head) {
-        free(head);
-        head = NULL;
+// Peek operation
+void peek() {
+    if (top == -1) {
+        printf("Stack is empty\n");
         return;
     }
-
-    temp = head;
-    while (temp->next != head) {
-        prev = temp;
-        temp = temp->next;
-    }
-
-    prev->next = head;
-    free(temp);
+    printf("Top element: %d\n", stack[top]);
 }
 
 // Traversal
 void traverse() {
-    struct node *temp;
-
-    if (head == NULL) {
-        printf("List is empty\n");
+    int i;
+    if (top == -1) {
+        printf("Stack is empty\n");
         return;
     }
-
-    temp = head;
-    printf("Circular List: ");
-    do {
-        printf("%d -> ", temp->data);
-        temp = temp->next;
-    } while (temp != head);
-    printf("(back to head)\n");
+    printf("Stack elements: ");
+    for (i = top; i >= 0; i--) {
+        printf("%d ", stack[i]);
+    }
+    printf("\n");
 }
 
 // Main function
 int main() {
-    insert_begin(10);
-    insert_begin(20);
-    insert_end(30);
-    insert_end(40);
+    push(10);
+    push(20);
+    push(30);
 
     traverse();
+    peek();
 
-    delete_begin();
-    traverse();
-
-    delete_end();
+    pop();
     traverse();
 
     return 0;
